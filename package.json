@@ -1,8 +1,12 @@
 {
   "name": "check-http-status-action",
-  "description": "Check HTTP Status of the URL and create a list of the URL with HTTP status code in GitHub Action.",
-  "version": "1.0.0",
+  "description": "Crawl a website or check a list of URLs for HTTP status codes, redirects and broken links in a GitHub Action.",
+  "version": "2.0.0",
+  "type": "module",
   "main": "index.js",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,7 +18,9 @@
     "github action",
     "http status",
     "link checker",
-    "status",
+    "broken links",
+    "crawler",
+    "sitemap",
     "redirects",
     "301",
     "404"
@@ -26,8 +32,7 @@
   },
   "homepage": "https://github.com/trunkcode/check-http-status-action",
   "dependencies": {
-    "@actions/core": "^1.2.7",
-    "@actions/github": "^5.0.0",
-    "check-http-status": "^1.2.0"
+    "@actions/core": "^3.0.1",
+    "check-http-status": "^2.0.0"
   }
 }
