@@ -1,18 +1,96 @@
 name: 'Check HTTP Status'
 author: TrunkCode <support@trunkcode.com>
-description: 'Check HTTP Status of the URL and create a list of the URL with HTTP status code.'
+description: 'Check HTTP status codes, redirects and broken links of a website or URL list.'
 inputs:
-  skip200:
-    description: 'Skip URLs from the list that are working correctly'
+  base-url:
+    description: 'Base URL for /paths. Default: the deployment URL.'
+    required: false
+  wait:
+    description: 'Seconds to wait for base-url to be ready. Default 120 for deployments, else 0.'
+    required: false
+  crawl:
+    description: 'Website URL(s) to crawl.'
     required: false
   sitemap:
-    description: 'Sitemap URL from where URLs needs to be fetched'
+    description: 'Sitemap URL(s) to fetch URLs from.'
     required: false
   urls:
-    description: 'URLs that needs to be checked'
+    description: 'URLs to check without crawling.'
     required: false
+  include:
+    description: 'Only crawl matching URLs.'
+    required: false
+  exclude:
+    description: "Don't crawl matching URLs (still checked)."
+    required: false
+  skip200:
+    description: 'Skip 200 OK URLs in the output.'
+    required: false
+  fail:
+    description: 'Fail when broken URLs are found.'
+    required: false
+  export:
+    description: 'Report file(s): .xlsx, .csv, .json or .html.'
+    required: false
+  config:
+    description: 'Path to a check-http-status config file.'
+    required: false
+  max-pages:
+    description: 'Max pages to crawl. Default 1000.'
+    required: false
+  max-depth:
+    description: 'Max link depth. Default unlimited.'
+    required: false
+  max-redirects:
+    description: 'Max redirects to follow. Default 10.'
+    required: false
+  check-external:
+    description: 'Check external links. Default true.'
+    required: false
+  check-assets:
+    description: 'Check images, scripts and CSS. Default false.'
+    required: false
+  subdomains:
+    description: 'Treat subdomains as internal. Default false.'
+    required: false
+  ignore-query:
+    description: 'Ignore query strings. Default false.'
+    required: false
+  respect-robots:
+    description: 'Honour robots.txt. Default false.'
+    required: false
+  concurrency:
+    description: 'Parallel requests. Default 10.'
+    required: false
+  delay:
+    description: 'Delay between requests (ms). Default 0.'
+    required: false
+  retries:
+    description: 'Retries for failed requests. Default 2.'
+    required: false
+  timeout:
+    description: 'Request timeout (ms). Default 15000.'
+    required: false
+  user-agent:
+    description: 'User-Agent header.'
+    required: false
+  headers:
+    description: 'Request headers, one "Name: value" per line.'
+    required: false
+  auth:
+    description: 'Basic auth as user:password.'
+    required: false
+outputs:
+  checked:
+    description: 'URLs checked.'
+  issues:
+    description: 'URLs with issues.'
+  broken:
+    description: 'Broken URLs.'
+  reports:
+    description: 'Report files written.'
 runs:
-  using: 'node12'
+  using: 'node24'
   main: 'index.js'
 branding:
   icon: 'check'
