@@ -1,6 +1,6 @@
 # Check HTTP Status action
 
-Crawl a website or check a list of URLs for HTTP status codes, redirects and broken links. Powered by [check-http-status](https://github.com/trunkcode/check-http-status) v2.
+Crawl a website or check a list of URLs for HTTP status codes, redirects and broken links. Reports also include H1, meta description and image alt text. Powered by [check-http-status](https://github.com/trunkcode/check-http-status) v2.
 
 ## Inputs
 
@@ -19,7 +19,7 @@ One of `crawl`, `sitemap`, `urls` or `base-url` is required. Lists accept one va
 | `fail` | Fail when broken URLs are found. |
 | `export` | Report file(s): `.xlsx`, `.csv`, `.json` or `.html`. |
 | `config` | Path to a [config file](https://github.com/trunkcode/check-http-status#config-file). |
-| `max-pages` | Max pages to crawl. Default `1000`. |
+| `max-pages` | Max pages to crawl. Default `5000`. |
 | `max-depth` | Max link depth. Default unlimited. |
 | `max-redirects` | Max redirects to follow. Default `10`. |
 | `check-external` | Check external links. Default `true`. |
