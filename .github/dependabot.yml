@@ -1,0 +1,15 @@
+version: 2
+updates:
+  # Dependabot doesn't update the committed node_modules: run `npm ci` on the PR
+  # branch and commit it.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]
