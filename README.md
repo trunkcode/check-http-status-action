@@ -75,7 +75,7 @@ One of `crawl`, `sitemap`, `urls` or `base-url` is required. Lists accept one va
       reports/link-report.xlsx
       reports/link-report.html
 
-- uses: actions/upload-artifact@v4
+- uses: actions/upload-artifact@v7
   if: always()
   with:
     name: link-report
@@ -131,7 +131,7 @@ For protected previews, use `auth` (Netlify password protection) or `headers` (e
 ### Use a config file
 
 ```yml
-- uses: actions/checkout@v4
+- uses: actions/checkout@v7
 - uses: trunkcode/check-http-status-action@v2
   with:
     config: check-http-status.config.json

@@ -1,5 +1,11 @@
 # check-http-status-action changelog
 
+## 2.1.1 - Oct 20, 2026
+
+### Fixed
+
+- check-http-status 2.2.1: HTML report colour contrast meets WCAG AA in light and dark mode
+
 ## 2.1.0 - Oct 20, 2026
 
 ### Changed
