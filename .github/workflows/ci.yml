@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  node-modules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --ignore-scripts
+      - name: node_modules matches package-lock.json
+        run: git diff --exit-code --stat -- node_modules
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: urls
+        uses: ./
+        with:
+          urls: |
+            https://example.com/
+            https://example.com/missing-page
+      - id: crawl
+        uses: ./
+        with:
+          base-url: https://example.com/
+          max-pages: 5
+          export: reports/report.html
+      - name: Check outputs
+        run: |
+          test "${{ steps.urls.outputs.checked }}" = 2
+          test "${{ steps.urls.outputs.broken }}" = 1
+          test "${{ steps.crawl.outputs.checked }}" -gt 0
+          test -f reports/report.html

@@ -1,6 +1,19 @@
 # Check HTTP Status action
 
-Crawl a website or check a list of URLs for HTTP status codes, redirects and broken links. Powered by [check-http-status](https://github.com/trunkcode/check-http-status) v2.
+[![Release][release-image]][release-url]
+[![Marketplace][marketplace-image]][marketplace-url]
+[![CI][ci-image]][ci-url]
+
+Crawl a website or check a list of URLs for HTTP status codes, redirects and broken links, along with **the pages each broken link was found on**. Powered by [check-http-status](https://github.com/trunkcode/check-http-status).
+
+**[Live demo report →](https://trunkcode.github.io/check-http-status/)**
+
+## Features
+
+- **Crawl a website** or check a list of URLs and sitemaps.
+- **Deploy previews:** checks the Netlify, Vercel, Heroku or Render preview URL automatically.
+- **Job summary** of the issues on every run, and `fail` to block a PR on broken links.
+- **Reports:** Excel, CSV, JSON or an interactive HTML report, with H1, meta description and image alt text.
 
 ## Inputs
 
@@ -19,7 +32,7 @@ One of `crawl`, `sitemap`, `urls` or `base-url` is required. Lists accept one va
 | `fail` | Fail when broken URLs are found. |
 | `export` | Report file(s): `.xlsx`, `.csv`, `.json` or `.html`. |
 | `config` | Path to a [config file](https://github.com/trunkcode/check-http-status#config-file). |
-| `max-pages` | Max pages to crawl. Default `1000`. |
+| `max-pages` | Max pages to crawl. Default `5000`. |
 | `max-depth` | Max link depth. Default unlimited. |
 | `max-redirects` | Max redirects to follow. Default `10`. |
 | `check-external` | Check external links. Default `true`. |
@@ -124,8 +137,35 @@ For protected previews, use `auth` (Netlify password protection) or `headers` (e
     config: check-http-status.config.json
 ```
 
+### Use the outputs
+
+```yml
+- id: links
+  uses: trunkcode/check-http-status-action@v2
+  with:
+    crawl: https://www.example.com/
+- run: echo "${{ steps.links.outputs.broken }} broken of ${{ steps.links.outputs.checked }}"
+```
+
 ## Upgrading from v1
 
 - v1 inputs still work, including JSON arrays.
 - `sitemap` and `urls` can now be used together.
 - Runs on Node.js 24.
+
+See the [changelog](CHANGELOG.md) for all changes.
+
+## Contributing
+
+Bug reports and pull requests are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md). Please report security problems privately ([SECURITY.md](SECURITY.md)).
+
+## License
+
+MIT
+
+[release-image]: https://img.shields.io/github/v/release/trunkcode/check-http-status-action
+[release-url]: https://github.com/trunkcode/check-http-status-action/releases
+[marketplace-image]: https://img.shields.io/badge/marketplace-check--http--status-blue?logo=github
+[marketplace-url]: https://github.com/marketplace/actions/check-http-status
+[ci-image]: https://github.com/trunkcode/check-http-status-action/actions/workflows/ci.yml/badge.svg
+[ci-url]: https://github.com/trunkcode/check-http-status-action/actions/workflows/ci.yml

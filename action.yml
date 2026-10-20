@@ -36,7 +36,7 @@ inputs:
     description: 'Path to a check-http-status config file.'
     required: false
   max-pages:
-    description: 'Max pages to crawl. Default 1000.'
+    description: 'Max pages to crawl. Default 5000.'
     required: false
   max-depth:
     description: 'Max link depth. Default unlimited.'

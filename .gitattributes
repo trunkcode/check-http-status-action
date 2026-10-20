@@ -1,0 +1,8 @@
+* text=auto
+*.js text eol=lf
+
+# Vendored as published; don't convert line endings.
+node_modules/** -text
+
+# Keep dot files out of `git archive`.
+.* export-ignore

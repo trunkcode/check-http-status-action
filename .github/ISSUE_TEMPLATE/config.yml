@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/trunkcode/check-http-status-action/security/advisories/new
+    about: Please report security problems privately, not as a public issue.
+  - name: Crawler bugs and features
+    url: https://github.com/trunkcode/check-http-status/issues
+    about: Problems with crawling or reports themselves belong to check-http-status.
