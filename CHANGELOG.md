@@ -7,6 +7,10 @@
 - check-http-status 2.2.0: reports include H1, meta description and image alt text
 - `max-pages` now defaults to 5000 instead of 1000
 
+### Fixed
+
+- Security: `uuid` is forced to 11.1.1 or newer (via `exceljs`)
+
 ## 2.0.0 - Oct 2, 2026
 
 ### New
